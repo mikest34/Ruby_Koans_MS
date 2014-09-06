@@ -1,0 +1,1 @@
+puts "one two-three".sub(/(t\w*)/) { $1[0, 1] }
