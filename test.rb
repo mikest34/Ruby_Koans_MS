@@ -1,1 +1,5 @@
-puts "one two-three".sub(/(t\w*)/) { $1[0, 1] }
+def my_global (a,b)
+	a + b
+end
+
+x(1)
