@@ -14,6 +14,12 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+
+	# validate arguments
+	raise TriangleError, "A triangle side must be a valid length" if a <= 0 || b <= 0 || c <= 0	
+	raise TriangleError, "Invalid length" if (a + b <= c) || (a + c <= b) || (b + c <= a)
+	
+	# determine type of triangle
 	if a == b && a == c
 		return :equilateral 
 	elsif a == b || a == c || b == c

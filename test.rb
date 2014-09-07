@@ -1,1 +1,1 @@
-fail "help"
+puts [2, 3, 4].inject(2) { |sum, item| sum + item }
