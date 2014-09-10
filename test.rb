@@ -1,10 +1,14 @@
-  class Dog2
-    def set_name(a_name)
-      @name = a_name
-    end
-  end
+class DiceSet
+	attr_accessor :values
+	def roll (roll = 0)
+		rolls = []
+		(0..(roll-1)).each do
+			rolls << rand(1..6)
+		end
+		self.values = rolls
+	end
+end
 
-  fido = Dog2.new
-  fido.set_name("Fido")
-  puts fido.instance_variables
-eval "fido.@name"
+dice = DiceSet.new
+dice.roll(5)
+puts dice.values
