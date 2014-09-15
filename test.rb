@@ -1,13 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/about_extra_credit')
 
-
-game = Greed.new
-
+game = Game.new
 game.player_cnt = 2
-game.new_player('Mike')
-game.new_player('Peggy')
-game.display_score
-game.watch_rounds
+game.add_player("mike")
+game.add_player("peggy")
 
-puts "test".to_i.is_a?(Integer)
+turn = GameTurn.new(game.players[0])
+turn.play
+
+turn = GameTurn.new(game.players[1])
+turn.play
+
+
 
