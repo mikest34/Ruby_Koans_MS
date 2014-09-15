@@ -1,58 +1,13 @@
-class Proxy
-	attr_accessor :messages
+require File.expand_path(File.dirname(__FILE__) + '/about_extra_credit')
 
-	def initialize(target_object)
-		@object = target_object
-		self.messages = []
-		self
-	end
 
-	def method_missing(method_name, *args)
-		self.messages << method_name
-		@object.send(method_name, *args)
-	end
+game = Greed.new
 
-	def respond_to? (method_name)
-		@object.send(:respond_to, method_name)
-	end
+game.player_cnt = 2
+game.new_player('Mike')
+game.new_player('Peggy')
+game.display_score
+game.watch_rounds
 
-	def called? (method_name)
-		self.messages.include?(method_name)
-	end
-
-	def number_of_times_called (method_name)
-		method_call_cnt = 0
-		if self.messages.include?(method_name)
-			self.messages.each do |item|
-				method_call_cnt += 1 if item == method_name
-			end
-		end
-		method_call_cnt
-	end
-
-end 
-
-class Television
-  attr_accessor :channel
-
-  def power
-    if @power == :on
-      @power = :off
-    else
-      @power = :on
-    end
-  end
-
-  def on?
-    @power == :on
-  end
-end
-
-tv = Proxy.new(Television.new)
-tv.power
-tv.channel = 48
-tv.power
-puts tv.number_of_times_called(:channel=)
-puts tv.number_of_times_called?(:power)
-
+puts "test".to_i.is_a?(Integer)
 

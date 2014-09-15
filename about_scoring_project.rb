@@ -33,12 +33,8 @@ def score(dice)
   score = 0
   roll_cnt = dice.inject(Hash.new(0)){|h,k| h[k] += 1;h}
   roll_cnt.each do |k,v|
-    if v >= 3
-      score += (k==1?1000:100)*k
-    end
-    if k == 1 || k == 5
-      score += (v>=3?(v-3):v)*(k==1?100:50)
-    end
+    score += (k==1?1000:100)*k if v >= 3
+    score += (v>=3?(v-3):v)*(k==1?100:50) if k == 1 || k == 5
   end
   score
 end

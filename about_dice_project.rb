@@ -6,7 +6,7 @@ class DiceSet
   attr_accessor :values
   def roll (roll = 0)
     rolls = []
-    (0..(roll-1)).each do
+    (1..roll).each do
       rolls << rand(1..6)
     end
     self.values = rolls
